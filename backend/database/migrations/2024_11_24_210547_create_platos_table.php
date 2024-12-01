@@ -13,6 +13,19 @@ return new class extends Migration
     {
         Schema::create('platos', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre');
+            $table->text('descripcion');
+            $table->decimal('precio', 5, 2);
+            $table->string('imagen_url')->nullable();
+            $table->integer('cantidad')->default(420); // Cantidad en gramos
+            $table->enum('tipo_comida', ['Principal', 'Vegetariano', 'Postre'])->default('Principal'); 
+            $table->boolean('disponibilidad')->default(true); 
+            $table->integer('proteinas')->nullable(); 
+            $table->integer('calorias')->nullable();
+            $table->integer('grasas')->nullable();
+            $table->integer('carbohidratos')->nullable();
+            // Ingredientes como un campo text
+            $table->text('ingredientes')->nullable(); // Aquí almacenaremos los ingredientes como un texto largo
             $table->timestamps();
         });
     }
