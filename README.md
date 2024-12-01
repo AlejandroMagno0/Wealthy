@@ -1,1 +1,1 @@
-# Wealthy# Wealthy 2 
+# Wealthy 
