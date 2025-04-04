@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Dish;
 use App\Http\Requests\StoreDishRequest;
 use App\Http\Requests\UpdateDishRequest;
+use Inertia\Inertia;
 
 class DishController extends Controller
 {
@@ -13,7 +14,10 @@ class DishController extends Controller
      */
     public function index()
     {
-        //
+        // 
+        return Inertia::render('Project/index', [
+            'dishes' => Dish::all()
+        ]);
     }
 
     /**
