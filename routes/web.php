@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 // Public routing
-Route::get('/welcome', function () {
+Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
@@ -17,9 +17,10 @@ Route::get('/welcome', function () {
     ]);
 });
 
-Route::get('/', function() {
+Route::get('/home', function() {
     return Inertia::render('Home');
 })->name('home');
+
 
 Route::get('/dishes', [DishController::class, 'index'])->name('dishes');
 

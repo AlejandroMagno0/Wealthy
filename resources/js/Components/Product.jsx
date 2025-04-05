@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { CartContext } from "@/Context/Cart";
+import { useContext, useEffect, useState } from "react";
 
 const Product = () => {
   const [products, setProducts] = useState([]);
-
+  const {cart, addCart} = useContext(CartContext);
   async function getProduct() {
     const response = await fetch("https://fakestoreapi.com/products/");
     const data = await response.json();
@@ -39,6 +40,7 @@ const Product = () => {
               
                 <button
                   className=" bg-green-600 text-white px-6 py-3 shadow-md hover:bg-green-800"
+                  onClick={() => addCart(product)}
                 >
                   Add to Cart
                 </button>

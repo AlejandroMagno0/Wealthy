@@ -42,11 +42,14 @@ export const CartProvider = ({ children }) => {
 
     const deleteCart = (id) => {
         try {
+            console.log("entro")
             // validar si existe y su cantidad
+            console.log(id);
             const exist = cart.find((item) => item.id === id);
             // si no existe
             if (!exist) return; 
             // si existe y su cantidad es iugal a 1 lo eliminamos
+            console.log("entro 2")
             if (exist.quantity <= 1) {
                 setCart(cart.filter((item) => item.id !== id));
             } else {
@@ -61,7 +64,11 @@ export const CartProvider = ({ children }) => {
     }
     
     const clearCart = () => {
-        setCart([]);
+        try {
+            setCart([]);
+        } catch (error) {
+            console.error("Error, no hemos podido eliminar el carrito: ", error);
+        }
     }
     return (
         <CartContext.Provider value={{cart, addCart, deleteCart, clearCart }}>

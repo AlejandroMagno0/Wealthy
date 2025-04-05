@@ -10,13 +10,13 @@ export default function CartPage() {
             {totalItems > 0 && cart.map((item) => (
                 <div key={item.id}>
                     <span>- Articulo: {item.name} - Precio: {((item.price) * item.quantity).toFixed(2)} - Cantidad {item.quantity}   </span>
-                    <button onClick={addCart} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                    <button onClick={() => addCart(item)} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                         Añadir al carrito
                     </button>
-                    <button onClick={deleteCart} class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
+                    <button onClick={() => deleteCart(item.id)} class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
                         Reducir carrito
                     </button>
-                    <button onClick={deleteCart} class="bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4 rounded-full">
+                    <button onClick={()=> clearCart()} class="bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4 rounded-full">
                         Limpiar carrito
                     </button>
                     <br />
